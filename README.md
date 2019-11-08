@@ -107,7 +107,8 @@ EOF
 ```
 
 
-### Run *Scripts*: You can run scripts too, just place them in the `priv/scripts` directory
+### Run *Scripts*
+You can run scripts too, just place them in the `priv/scripts` directory
   * Scripts are run in alphabetical order
   * Interpreted by /bin/bash in the chrooted environment of the sdcard
   * nonzero exit status will finish the build process
