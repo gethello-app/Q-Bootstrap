@@ -53,7 +53,7 @@ sudo apt install -y qemu qemu-user-static
 They configure various aspects of your build. See `skel/config.env` for an example.
 
 
-## Building an image
+## Preparing the build
 
 You can build an image following the following steps and customization options:
 
@@ -71,7 +71,9 @@ cp -r skel priv
   * If you are going to be iterating a lot of images and want to autoflash onto a sd card:
     Set `Q_AUTOFLASH_DRIVE=/dev/sdXXX` to your SDcard (no partitions, just the card)
   * Set `Q_KEEP_MOUNTED` to true if you want to explore the resulting filesystem before unmounting
-### Add *Overlays*. 
+  
+  
+### Add *Overlays*
 
 Overlays are just files that will overwrite anything on
 the pi's original filesystems. You can use `overlays/1` for the boot partition
