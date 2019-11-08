@@ -71,16 +71,19 @@ cp -r skel priv
   * If you are going to be iterating a lot of images and want to autoflash onto a sd card:
     Set `Q_AUTOFLASH_DRIVE=/dev/sdXXX` to your SDcard (no partitions, just the card)
   * Set `Q_KEEP_MOUNTED` to true if you want to explore the resulting filesystem before unmounting
-* Add some *overlays*. Overlays are just files that will overwrite anything on
-  the pi's original filesystems. You can use `overlays/1` for the boot partition
-  and `overlays/2` for the ext4 rootfs. 
+### Add *Overlays*. 
 
-  * A good example is to enable ssh:
+Overlays are just files that will overwrite anything on
+the pi's original filesystems. You can use `overlays/1` for the boot partition
+and `overlays/2` for the ext4 rootfs. 
+
+* A good example is to enable ssh:
 ```
 touch `priv/overlays/1/ssh
 ```
 
-  * And to add your SSH key to login to the pi
+* And to add your SSH key to login to the pi
+  
 ```
 keys_file="priv/overlays/2/home/pi/.ssh/authorized_keys"
 mkdir -p $(dirname $keys_file)
@@ -89,7 +92,8 @@ chmod 600 $keys_file
 sudo chown 1000:1000 $keys_file
 ```
 
-  * Maybe you want your pi to auto-connect to your wifi:
+* Maybe you want your pi to auto-connect to your wifi:
+
 ```
 cat << EOF > priv/overlays/2/etc/wpa_supplicant/wpa_supplicant.conf
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
@@ -103,7 +107,7 @@ EOF
 ```
 
 
-* *Scripts*: You can run scripts too, just place them in the `priv/scripts` directory
+### Run *Scripts*: You can run scripts too, just place them in the `priv/scripts` directory
   * Scripts are run in alphabetical order
   * Interpreted by /bin/bash in the chrooted environment of the sdcard
   * nonzero exit status will finish the build process
@@ -111,12 +115,13 @@ EOF
 Note that you should not set hostname with the hostname command in this script directly, instead, modify the files /etc/hostname and /etc/hosts in overlays
   
 
-* Run the build script to generate the image
+### Build the image
+Run the build script to generate the image
 ```
 # From the Q-Bootstrap directory:
 tools/build.sh priv/config.env
 ```
 
-
+You can see the skel directory for an example (both overlays and scripts are explained in detail)
 
 
