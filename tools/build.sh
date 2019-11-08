@@ -35,10 +35,12 @@ if [[ -n $Q_EXPAND_FS_SIZE_MB ]]; then
 	echo "Found ext partition at position $PART_NUM"
 	# Expand the image first
 	echo "Expanding image file by $Q_EXPAND_FS_SIZE_MB MB"
-    dd bs=8M if=/dev/zero of=$Q_OUT_IMG count=$(($Q_EXPAND_FS_SIZE_MB/8)) status=progress oflag=sync,append conv=notrunc
+        dd bs=8M if=/dev/zero of=$Q_OUT_IMG count=$(($Q_EXPAND_FS_SIZE_MB/8)) status=progress oflag=sync,append conv=notrunc
 	# Now grow the partition
+	echo "Growing the partition"
 	sudo growpart $Q_OUT_IMG $PART_NUM
 	# We will resize the fs once it is mounted later on
+	echo "FS will be expanded after mounting"
 fi
 
 
