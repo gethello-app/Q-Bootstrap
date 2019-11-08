@@ -1,7 +1,7 @@
 # Q-Bootstrap
 
 This repository contains the necessary images for a raspbian to be bootstrapped with customized software on it.
-The idea is to build a very simple buildroot but it should work with any image (raspbian in our particular case)
+The idea is to build a very simple buildroot, aimed at raspbian but it should work with any linux based image.
 
 Key features are:
 * Specifically targeted at Raspbian
