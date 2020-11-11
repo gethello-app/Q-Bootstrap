@@ -1,6 +1,7 @@
 #!/bin/bash
 
-
+# to install qemu-arm-static
+# apt install qemu binfmt-support qemu-user-static
 target=$Q_MNT_ROOTFS
 
 # Copy the qemu binary to the target platform
